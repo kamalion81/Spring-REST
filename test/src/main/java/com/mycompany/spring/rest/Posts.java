@@ -7,7 +7,7 @@ package com.mycompany.spring.rest;
  */
 
 /**
- *
+ * Перечисление должностей
  * @author Kamalion
  */
 public enum Posts {

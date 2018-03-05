@@ -8,6 +8,10 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+/**
+ * Класс -  обработчик значения полей с типом DateTime
+ * @author kamalion
+ */
 public class DateTimeFieldHandler extends GeneralizedFieldHandler {
     private static String dateFormatPattern;
 
@@ -16,6 +20,11 @@ public class DateTimeFieldHandler extends GeneralizedFieldHandler {
         dateFormatPattern = config.getProperty("date-format");
     }
 
+    /**
+     * Преобразовывает значение DateTime в String
+     * @param value значение
+     * @return строковое представление
+     */
     @Override
     public Object convertUponGet(Object value) {
         DateTime dateTime = (DateTime) value;
@@ -23,6 +32,11 @@ public class DateTimeFieldHandler extends GeneralizedFieldHandler {
         return format(dateTime);
     }
 
+    /**
+     * Преобразовывает значение String в DateTime
+     * @param value значение    
+     * @return значение в виде DateTime
+     */
     @Override
     public Object convertUponSet(Object value) {
         String dateTimeString = (String) value;

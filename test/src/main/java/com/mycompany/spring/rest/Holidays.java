@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
+ * Список отпусков для преобразования в XML и JSON
  * @author Kamalion
  */
 public class Holidays implements Serializable{

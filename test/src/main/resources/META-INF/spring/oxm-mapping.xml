@@ -1,9 +1,4 @@
 <mapping>
-    <class name="com.mycompany.spring.rest.Contacts">
-        <field name="contacts" type="com.mycompany.spring.rest.Contact" collection="arraylist">
-            <bind-xml name="contact"/>
-        </field>
-    </class>
     
     <class name="com.mycompany.spring.rest.Holidays">
         <field name="holidays" type="com.mycompany.spring.rest.Holiday" collection="arraylist" container="false">
@@ -11,25 +6,6 @@
         </field>
     </class>
 
-    <class name="com.mycompany.spring.rest.Contact" identity="id">
-        <map-to xml="contact" />
-
-        <field name="id" type="long">
-            <bind-xml name="id" node="element"/>
-        </field>
-        <field name="firstName" type="string">
-            <bind-xml name="firstName" node="element" />
-        </field>
-        <field name="lastName" type="string">
-            <bind-xml name="lastName" node="element" />
-        </field>
-        <field name="birthDate" type="string" handler="dateHandler">
-            <bind-xml name="birthDate" node="element" />
-        </field>
-        <field name="version" type="integer">
-            <bind-xml name="version" node="element" />
-        </field>
-    </class>
     
     <class name="com.mycompany.spring.rest.Holiday" identity="id">
         <map-to xml="holiday" />
@@ -77,8 +53,6 @@
         </field>
         
     </class>
-    
-    
 
     <field-handler name="dateHandler" class="com.mycompany.spring.rest.DateTimeFieldHandler">
         <param name="date-format" value="yyyy-MM-dd"/>

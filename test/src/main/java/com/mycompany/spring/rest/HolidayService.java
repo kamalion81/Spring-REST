@@ -8,7 +8,7 @@ package com.mycompany.spring.rest;
 import java.util.List;
 
 /**
- *
+ * Сервис для отпусков
  * @author Kamalion
  */
 public interface HolidayService {

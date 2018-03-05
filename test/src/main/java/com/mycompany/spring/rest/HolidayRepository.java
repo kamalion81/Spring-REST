@@ -8,7 +8,7 @@ package com.mycompany.spring.rest;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * CRUD репозиторий для отпусков
  * @author Kamalion
  */
 public interface HolidayRepository extends CrudRepository<Holiday, Long>{

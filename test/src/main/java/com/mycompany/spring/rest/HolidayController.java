@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
- * @author Valya
+ * Контроллер MVC для отпусков
+ * @author kamalion
  */
 @Controller
 @RequestMapping(value = "/holiday")
@@ -24,19 +24,32 @@ public class HolidayController {
     @Autowired
     private HolidayService service;
     
+    /**
+     * Получает список всех отпусков
+     * @return список отпусков
+     */
     @RequestMapping(value = "/listholiday", method = RequestMethod.GET)
     @ResponseBody
     public Holidays listData(){
         return new Holidays(service.findAll());
     }
     
+    /**
+     * Получает отпуск по id
+     * @param id
+     * @return отпуск
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Holiday findHolidayById(@PathVariable Long id){
         return service.findById(id);
     }
     
-    
+    /**
+     * Создает новый отпуск
+     * @param holiday
+     * @return созданные отпуск
+     */
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
     public Holiday create(@RequestBody Holiday holiday){
@@ -45,12 +58,20 @@ public class HolidayController {
         
     }
     
+    /**
+     * Редактирует существующий отпуск
+     * @param holiday 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public void update(@RequestBody Holiday holiday){
         service.save(holiday);
     }
     
+    /**
+     * Удаляет выбранный отпуск по id
+     * @param id 
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public void delete(@PathVariable Long id){

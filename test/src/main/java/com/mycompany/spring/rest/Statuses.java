@@ -6,7 +6,7 @@
 package com.mycompany.spring.rest;
 
 /**
- *
+ * Перечисление статусов
  * @author Kamalion
  */
 public enum Statuses {

@@ -5,7 +5,6 @@
  */
 package com.mycompany.spring.rest;
 
-import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,14 +13,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
- *
+ * Отпуск
  * @author Kamalion
  */
 @Entity
@@ -46,6 +44,7 @@ public class Holiday {
         this.id = id;
     }
 
+    //Пользователь
     @OneToOne(cascade = CascadeType.PERSIST)
     public User getUser() {
         return user;
@@ -55,6 +54,7 @@ public class Holiday {
         this.user = user;
     }
 
+    //Дата
     @Column(name = "DATE_BEGIN")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     public DateTime getDateBegin() {
@@ -65,6 +65,7 @@ public class Holiday {
         this.dateBegin = date;
     }
 
+    //Продолжительность
     @Column(name = "DURATION")
     public int getDuration() {
         return duration;
@@ -74,6 +75,7 @@ public class Holiday {
         this.duration = duration;
     }
     
+    //Статус отпуска
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     public Statuses getStatus() {

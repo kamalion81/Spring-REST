@@ -19,7 +19,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
- *
+ * Класс Пользователь
  * @author Kamalion
  */
 @Entity
@@ -46,6 +46,10 @@ public class User{
         this.id = id;
     }
 
+    /**
+     * Имя
+     * @return 
+     */
     @Column(name = "FIRST_NAME")
     public String getFirstName() {
         return firstName;
@@ -54,6 +58,11 @@ public class User{
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    
+    /**
+     * Фамилия
+     * @return 
+     */
     @Column(name = "LAST_NAME")
     public String getLastName() {
         return lastName;
@@ -63,6 +72,10 @@ public class User{
         this.lastName = lastName;
     }
 
+    /**
+     * Должность
+     * @return 
+     */
     @Column(name = "POST")
     @Enumerated(EnumType.STRING)
     public Posts getPost() {
@@ -73,6 +86,10 @@ public class User{
         this.post = post;
     }
 
+    /**
+     * Логин
+     * @return 
+     */
     @Column(name = "LOGIN")
     public String getLogin() {
         return login;
@@ -82,6 +99,10 @@ public class User{
         this.login = login;
     }
 
+    /**
+     * Пароль
+     * @return 
+     */
     @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
@@ -91,6 +112,10 @@ public class User{
         this.password = password;
     }
 
+    /**
+     * Дата принятия на работу
+     * @return 
+     */
     @Column(name = "EMPLOYMENT_DATE")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     public DateTime getEmploymentDate() {

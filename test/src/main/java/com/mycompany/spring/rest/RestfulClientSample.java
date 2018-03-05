@@ -4,6 +4,10 @@ import org.joda.time.DateTime;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Класс проверки работы REST служб
+ * @author kamalion
+ */
 public class RestfulClientSample {
     private static final String URL_GET_ALL_HOLIDAYS =
             "http://localhost:8080/test/restful/holiday/listholiday";
@@ -26,7 +30,7 @@ public class RestfulClientSample {
 
         System.out.println("Testing retrieve all holidays:");
         Holidays holidays = restTemplate.getForObject(URL_GET_ALL_HOLIDAYS, Holidays.class);
-        listContacts(holidays);
+        listHolidays(holidays);
 
         System.out.println("Testing retrieve a holiday by id :");
         holiday = restTemplate.getForObject(URL_GET_HOLIDAY_BY_ID, Holiday.class, 1);
@@ -35,7 +39,6 @@ public class RestfulClientSample {
 
         holiday = restTemplate.getForObject(URL_UPDATE_HOLIDAY, Holiday.class, 1);
         holiday.setDuration(18);
-        //contact.setFirstName("John Doe");
         System.out.println("Testing update holiday by id :");
         restTemplate.put(URL_UPDATE_HOLIDAY, holiday, 1);
         System.out.println("Holiday update successfully: " + holiday);
@@ -44,7 +47,7 @@ public class RestfulClientSample {
         restTemplate.delete(URL_DELETE_HOLIDAY, 1);
         System.out.println("Testing delete holiday by id :");
         holidays = restTemplate.getForObject(URL_GET_ALL_HOLIDAYS, Holidays.class);
-        listContacts(holidays);
+        listHolidays(holidays);
 
         System.out.println("Testing create holiday :");
         Holiday holidayNew = new Holiday();
@@ -61,14 +64,11 @@ public class RestfulClientSample {
         user.setEmploymentDate(new DateTime());
         
         holidayNew.setUser(user);
-//        contactNew.setFirstName("James");
-//        contactNew.setLastName("Gosling");
-//        contactNew.setBirthDate(new DateTime());
         holidayNew = restTemplate.postForObject(URL_CREATE_HOLIDAY, holidayNew, Holiday.class);
         System.out.println("Holiday created successfully: " + holidayNew);
     }
 
-    private static void listContacts(Holidays holidays) {
+    private static void listHolidays(Holidays holidays) {
         for (Holiday holiday: holidays.getHolidays()) {
             System.out.println(holiday);
         }
