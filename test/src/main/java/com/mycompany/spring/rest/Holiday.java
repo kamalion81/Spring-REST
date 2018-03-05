@@ -6,6 +6,7 @@
 package com.mycompany.spring.rest;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -45,7 +46,7 @@ public class Holiday {
         this.id = id;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     public User getUser() {
         return user;
     }
@@ -82,6 +83,13 @@ public class Holiday {
     public void setStatus(Statuses status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Holiday{" + "dateBegin= " + dateBegin + ", duration= " + duration + ", status= " + status + ", user= " + user + '}';
+    }
+    
+    
 
     
     

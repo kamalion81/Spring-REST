@@ -7,6 +7,7 @@ package com.mycompany.spring.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,13 @@ public class HolidayController {
         return new Holidays(service.findAll());
     }
     
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Holiday findHolidayById(@PathVariable Long id){
+        return service.findById(id);
+    }
+    
+    
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
     public Holiday create(@RequestBody Holiday holiday){
@@ -40,7 +48,14 @@ public class HolidayController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public void update(@RequestBody Holiday holiday){
-        
+        service.save(holiday);
+    }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void delete(@PathVariable Long id){
+        Holiday holiday = service.findById(id);
+        service.delete(holiday);
     }
     
 }

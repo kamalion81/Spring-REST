@@ -4,8 +4,9 @@
             <bind-xml name="contact"/>
         </field>
     </class>
+    
     <class name="com.mycompany.spring.rest.Holidays">
-        <field name="holidays" type="com.mycompany.spring.rest.Holiday" collection="arraylist">
+        <field name="holidays" type="com.mycompany.spring.rest.Holiday" collection="arraylist" container="false">
             <bind-xml name="holiday"/>
         </field>
     </class>
@@ -71,7 +72,7 @@
         <field name="password" type="string">
             <bind-xml name="password" node="element" />
         </field>
-        <field name="employmentDate" type="string" handler="dateHandler">
+        <field name="employmentDate" type="string" handler="dateHandler2">
             <bind-xml name="employmentDate" node="element" />
         </field>
         
@@ -80,6 +81,9 @@
     
 
     <field-handler name="dateHandler" class="com.mycompany.spring.rest.DateTimeFieldHandler">
+        <param name="date-format" value="yyyy-MM-dd"/>
+    </field-handler>
+    <field-handler name="dateHandler2" class="com.mycompany.spring.rest.DateTimeFieldHandler">
         <param name="date-format" value="yyyy-MM-dd"/>
     </field-handler>
 </mapping>
